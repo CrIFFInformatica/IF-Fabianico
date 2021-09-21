@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Menus/Créditos.gd" type="Script" id=1]
+[ext_resource path="res://World/rock_4.png" type="Texture" id=2]
+[ext_resource path="res://Menus/MainMenu.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Menus/Menu Music.tscn" type="PackedScene" id=4]
+
+[node name="Credits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -1.35525e-20, 0 )
+scale = Vector2( 0.166667, 0.17037 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Button" type="Button" parent="."]
+margin_left = 8.0
+margin_top = 152.0
+margin_right = 104.0
+margin_bottom = 194.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 3 )
+text = "Voltar"
+
+[node name="Menu Music" parent="." instance=ExtResource( 4 )]
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Control"]
+modulate = Color( 1, 1, 1, 0.796078 )
+margin_left = 40.0
+margin_top = 16.0
+margin_right = 274.0
+margin_bottom = 144.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = 40.0
+margin_top = 19.1181
+margin_right = 506.0
+margin_bottom = 259.118
+grow_horizontal = 2
+grow_vertical = 0
+rect_scale = Vector2( 0.5, 0.5 )
+focus_mode = 1
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Esse protótipo foi feito por:
+
+Diretor Criativo - Nathan Leonardo da Cruz - Info 1C
+Pixel Arts - Rafael Li Wu - Info 1C
+Programador - Rafael Soares Silva - Info 1C
+Pixel Arts - Ronald Oliveira de Souza - Info 1C
+
+
+Beta Tester - Lucas Rangel Bastos - C. E. Único"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

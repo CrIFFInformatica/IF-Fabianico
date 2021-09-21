@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Menus/Opções.gd" type="Script" id=1]
+[ext_resource path="res://World/rock_4.png" type="Texture" id=2]
+[ext_resource path="res://Menus/MainMenu.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Menus/Menu Music.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Menus/Fonte/ARIALBD.TTF"
+
+[sub_resource type="DynamicFont" id=2]
+size = 10
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 1 )
+
+[node name="Options" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.166667, 0.17037 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Button" type="Button" parent="."]
+margin_left = 8.0
+margin_top = 152.0
+margin_right = 104.0
+margin_bottom = 194.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 3 )
+text = "Voltar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu Music" parent="." instance=ExtResource( 4 )]
+
+[node name="CheckBox" type="CheckBox" parent="."]
+margin_left = -1.76776
+margin_top = -0.658638
+margin_right = 61.2322
+margin_bottom = 23.3414
+custom_fonts/font = SubResource( 2 )
+text = "Música"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HScrollBar" type="HScrollBar" parent="CheckBox"]
+margin_left = 4.29189
+margin_top = 24.0
+margin_right = 60.2919
+margin_bottom = 36.0
+min_value = -80.0
+max_value = 24.0
+value = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

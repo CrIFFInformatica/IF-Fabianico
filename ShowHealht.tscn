@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://World/79381.jpg" type="Texture" id=1]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Menus/Fonte/ARIALBD.TTF"
+
+[sub_resource type="DynamicFont" id=2]
+size = 17
+outline_color = Color( 0.227451, 0.211765, 0.552941, 1 )
+use_filter = true
+font_data = SubResource( 1 )
+
+[node name="Control" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 0, 0, 0, 0.447059 )
+margin_left = -5.32655
+margin_top = -19.3695
+margin_right = 5.67345
+margin_bottom = -11.3695
+texture = ExtResource( 1 )
+expand = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = -5.96851
+margin_top = -22.1071
+margin_right = 7.03149
+margin_bottom = -7.10706
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

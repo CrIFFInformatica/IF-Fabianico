@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<cyotek.spriter.project version="1.0.0.0" generator="Cyotek Spriter 1.9.0.247" edition="" timestamp="2020-11-19 20:08:06Z">
+  <canvas w="320" h="64" />
+  <maximumSpriteSize w="192" h="32" />
+  <folders />
+  <export exportCss="true" cssFileName="" exportSpriteSheet="true" exportSprites="false" imageFileName="" imageFormat="Png" exportHtml="false" htmlFileName="" createBackups="false" backupHistorySize="0" />
+  <sprite packingMethod="2" orientation="1" maximumSize="1024" backgroundColor="Transparent" forcePowerOfTwo="false" sort="false">
+    <minimumSize w="0" h="0" />
+  </sprite>
+  <css overwriteMode="0" prefix="" suffix="" classPrefix="" classSuffix="" classQualifier="." invertPositions="true" />
+  <images>
+    <image id="f0615a5417fc40a89e6bfe15a7ed10c4" className="fabianomovecompleto" fileName="FABIANO MOVE COMPLETO.png" x="0" y="0" width="192" height="32" excluded="false" locked="false" excludeDerivedImages="false" />
+    <image id="0c7e3ce2a41a4cd7835604c8d89522f6" className="fabianomove" fileName="Fabiano Move.png" x="0" y="32" width="128" height="32" excluded="false" locked="false" excludeDerivedImages="false" />
+  </images>
+  <effects />
+  <addinSettings>
+    <settings name="OptiPNG" />
+  </addinSettings>
+</cyotek.spriter.project>

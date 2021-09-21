@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Chemical Plant Zone - Sonic the Hedgehog 2 [OST].ogg-3fc3ee797e51bedf767bd2d60284a698.oggstr"
+
+[deps]
+
+source_file="res://World/Chemical Plant Zone - Sonic the Hedgehog 2 [OST].ogg"
+dest_files=[ "res://.import/Chemical Plant Zone - Sonic the Hedgehog 2 [OST].ogg-3fc3ee797e51bedf767bd2d60284a698.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

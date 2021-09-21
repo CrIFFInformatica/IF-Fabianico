@@ -1,0 +1,378 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://World/TileMap.tscn" type="PackedScene" id=2]
+[ext_resource path="res://World/CanvasLayer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/World.gd" type="Script" id=4]
+[ext_resource path="res://World/MovingPlatform.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Menus/Menu Music.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://World/Area2D.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemies/RangedEnemy.tscn" type="PackedScene" id=9]
+[ext_resource path="res://World/World2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://World/MovingPlatformUP.tscn" type="PackedScene" id=11]
+[ext_resource path="res://World/sprite_montanha_krita.png" type="Texture" id=12]
+[ext_resource path="res://World/Coin.tscn" type="PackedScene" id=13]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 912, 32 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 42.7542, 41.4816 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "PingPongPathFollow"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Path2D/PathFollow2D:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.99 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "PingPongPathFollow"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Path2D/PathFollow2D:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.99 ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 1081.61, 372.08 )
+
+[node name="World" type="Node2D"]
+position = Vector2( 16, -8 )
+script = ExtResource( 4 )
+
+[node name="World2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2531.93, -404.656 )
+
+[node name="FinalBoss" parent="World2" index="3"]
+position = Vector2( 276.07, 28 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 1712, -136 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1200, 1200 )
+region_filter_clip = true
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 1000, -136 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1200, 1200 )
+region_filter_clip = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 280, -136 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1200, 1200 )
+region_filter_clip = true
+
+[node name="TileMap" parent="." instance=ExtResource( 2 )]
+
+[node name="Rangeds" type="Node2D" parent="."]
+
+[node name="KinematicBody2D" parent="Rangeds" instance=ExtResource( 9 )]
+position = Vector2( 329.846, 8.96719 )
+
+[node name="Range" parent="Rangeds/KinematicBody2D" index="5"]
+scale = Vector2( 2.7, 2.7 )
+
+[node name="KinematicBody2D2" parent="Rangeds" instance=ExtResource( 9 )]
+position = Vector2( 365.693, -343.115 )
+
+[node name="Range" parent="Rangeds/KinematicBody2D2" index="5"]
+scale = Vector2( 2.7, 2.7 )
+
+[node name="KinematicBody2D3" parent="Rangeds" instance=ExtResource( 9 )]
+position = Vector2( 714.737, -424.7 )
+
+[node name="Range" parent="Rangeds/KinematicBody2D3" index="5"]
+scale = Vector2( 2.7, 2.7 )
+
+[node name="KinematicBody2D4" parent="Rangeds" instance=ExtResource( 9 )]
+position = Vector2( 1447.98, -70.3273 )
+
+[node name="Range" parent="Rangeds/KinematicBody2D4" index="5"]
+scale = Vector2( 2.7, 2.7 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 1632, -96 )
+current = true
+zoom = Vector2( 0.8, 0.8 )
+limit_left = -96
+limit_top = -448
+limit_right = 3125
+limit_bottom = 192
+limit_smoothed = true
+smoothing_enabled = true
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1632, -96 )
+player_health = 4
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 3 )]
+
+[node name="Control5" parent="CanvasLayer" index="1"]
+visible = false
+
+[node name="ParallaxLayer" type="ParallaxBackground" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 0, 256 )
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 560, 32 )
+shape = SubResource( 1 )
+
+[node name="Chest" parent="." instance=ExtResource( 8 )]
+position = Vector2( -36.3712, 69.6907 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 144.365, 164.369 )
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 253.206, 129.091 )
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 80, -56 )
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 62.2879, -344.165 )
+
+[node name="Enemy5" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 163.195, -311.37 )
+
+[node name="Enemy6" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 255.694, -309.689 )
+
+[node name="Enemy7" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 329.693, -327.347 )
+
+[node name="Enemy8" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 453.305, -342.484 )
+
+[node name="Enemy9" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 648.393, -409.755 )
+
+[node name="Enemy10" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 759.391, -408.914 )
+
+[node name="Enemy11" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 1136, -336 )
+
+[node name="Enemy12" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 1544, -40 )
+
+[node name="Enemy14" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 1412.77, -57.4197 )
+
+[node name="Enemy15" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 1616, -40 )
+
+[node name="Enemy13" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 1374.18, -57.1196 )
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2( 1692.87, -56.2363 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2( 8.46362, -21.3816 )
+shape = SubResource( 2 )
+
+[node name="Node2D" parent="." instance=ExtResource( 6 )]
+
+[node name="MOVINGPLATFORMS" type="Node2D" parent="."]
+
+[node name="MovingPlatform2" parent="MOVINGPLATFORMS" instance=ExtResource( 5 )]
+position = Vector2( 856, -360 )
+
+[node name="AnimationPlayer" parent="MOVINGPLATFORMS/MovingPlatform2" index="2"]
+anims/PingPongPathFollow = SubResource( 3 )
+
+[node name="MovingPlatform3" parent="MOVINGPLATFORMS" instance=ExtResource( 5 )]
+position = Vector2( 984, -328 )
+
+[node name="AnimationPlayer" parent="MOVINGPLATFORMS/MovingPlatform3" index="2"]
+anims/PingPongPathFollow = SubResource( 4 )
+
+[node name="MovingPlatformUP" parent="MOVINGPLATFORMS" instance=ExtResource( 11 )]
+position = Vector2( -32, -136 )
+
+[node name="KinematicBody2D" parent="MOVINGPLATFORMS/MovingPlatformUP" index="0"]
+position = Vector2( -0.23642, -0.361603 )
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource( 13 )]
+position = Vector2( 120, -56 )
+scale = Vector2( 0.025, 0.025 )
+
+[node name="Coin2" parent="Coins" instance=ExtResource( 13 )]
+position = Vector2( 75.0508, 162.753 )
+scale = Vector2( 0.025, 0.025 )
+
+[node name="Coin3" parent="Coins" instance=ExtResource( 13 )]
+position = Vector2( 327.448, 120.687 )
+scale = Vector2( 0.025, 0.025 )
+
+[node name="Coin4" parent="Coins" instance=ExtResource( 13 )]
+position = Vector2( 608.417, 87.3513 )
+scale = Vector2( 0.025, 0.025 )
+
+[node name="Coin5" parent="Coins" instance=ExtResource( 13 )]
+position = Vector2( 47.2714, 37.3481 )
+scale = Vector2( 0.025, 0.025 )
+
+[node name="Coin6" parent="Coins" instance=ExtResource( 13 )]
+position = Vector2( 100.449, -347.597 )
+scale = Vector2( 0.025, 0.025 )
+
+[node name="Coin7" parent="Coins" instance=ExtResource( 13 )]
+position = Vector2( 408.405, -344.422 )
+scale = Vector2( 0.025, 0.025 )
+
+[node name="Coin8" parent="Coins" instance=ExtResource( 13 )]
+position = Vector2( 790.969, -409.505 )
+scale = Vector2( 0.025, 0.025 )
+
+[node name="Coin9" parent="Coins" instance=ExtResource( 13 )]
+position = Vector2( 927.485, -378.551 )
+scale = Vector2( 0.025, 0.025 )
+
+[node name="Coin10" parent="Coins" instance=ExtResource( 13 )]
+position = Vector2( 1160.83, -334.104 )
+scale = Vector2( 0.025, 0.025 )
+
+[node name="Coin11" parent="Coins" instance=ExtResource( 13 )]
+position = Vector2( 1225.12, -57.1023 )
+scale = Vector2( 0.025, 0.025 )
+
+[node name="Coin12" parent="Coins" instance=ExtResource( 13 )]
+position = Vector2( 1640.23, -42.022 )
+scale = Vector2( 0.025, 0.025 )
+
+[node name="Coin13" parent="Coins" instance=ExtResource( 13 )]
+position = Vector2( 1486.25, -57.1023 )
+scale = Vector2( 0.025, 0.025 )
+
+[node name="Coin14" parent="Coins" instance=ExtResource( 13 )]
+position = Vector2( 295.7, 23.0615 )
+scale = Vector2( 0.025, 0.025 )
+
+[node name="Coin15" parent="Coins" instance=ExtResource( 13 )]
+position = Vector2( -27.3364, -342.041 )
+scale = Vector2( 0.025, 0.025 )
+
+[node name="EnemyMorto" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyMorto"]
+position = Vector2( 913.579, -146.419 )
+shape = SubResource( 5 )
+
+[node name="SmoothCamera" type="Timer" parent="."]
+[connection signal="ItensCantinaAlm" from="." to="Player" method="_on_World_ItensCantinaAlm"]
+[connection signal="ItensCantinaCoq" from="." to="Player" method="_on_World_ItensCantinaCoq"]
+[connection signal="ItensCantinaCox" from="." to="Player" method="_on_World_ItensCantinaCox"]
+[connection signal="Next_phase" from="." to="Player" method="_on_World_Next_phase"]
+[connection signal="finished" from="World2" to="Player" method="_on_World2_finished"]
+[connection signal="player_dead" from="Player" to="." method="_on_Player_player_dead"]
+[connection signal="pressed" from="CanvasLayer/Control5/ButtonCox" to="." method="_on_ButtonCox_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control5/ButtonCoqui" to="." method="_on_ButtonCoqui_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control5/ButtonAlmo" to="." method="_on_ButtonAlmo_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control5/Continue" to="." method="_on_Continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="timeout" from="CanvasLayer/Item baú/Iten_timer" to="." method="_on_Iten_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/Control2/ButtonNext" to="." method="_on_ButtonNext_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="Iten1" from="Chest" to="." method="_on_Chest_Iten1"]
+[connection signal="Iten1" from="Chest" to="Player" method="_on_Chest_Iten1"]
+[connection signal="Iten2" from="Chest" to="." method="_on_Chest_Iten2"]
+[connection signal="Iten2" from="Chest" to="Player" method="_on_Chest_Iten2"]
+[connection signal="Iten3" from="Chest" to="." method="_on_Chest_Iten3"]
+[connection signal="Iten3" from="Chest" to="Player" method="_on_Chest_Iten3"]
+[connection signal="Iten4" from="Chest" to="." method="_on_Chest_Iten4"]
+[connection signal="Iten4" from="Chest" to="Player" method="_on_Chest_Iten4"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
+[connection signal="body_entered" from="Coins/Coin" to="." method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Coins/Coin2" to="." method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Coins/Coin3" to="." method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Coins/Coin4" to="." method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Coins/Coin5" to="." method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Coins/Coin6" to="." method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Coins/Coin7" to="." method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Coins/Coin8" to="." method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Coins/Coin9" to="." method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Coins/Coin10" to="." method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Coins/Coin11" to="." method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Coins/Coin12" to="." method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Coins/Coin13" to="." method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Coins/Coin14" to="." method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Coins/Coin15" to="." method="_on_Coin_body_entered"]
+[connection signal="body_exited" from="EnemyMorto" to="." method="_on_EnemyMorto_body_exited"]
+[connection signal="timeout" from="SmoothCamera" to="." method="_on_SmoothCamera_timeout"]
+
+[editable path="World2"]
+
+[editable path="Rangeds/KinematicBody2D"]
+
+[editable path="Rangeds/KinematicBody2D2"]
+
+[editable path="Rangeds/KinematicBody2D3"]
+
+[editable path="Rangeds/KinematicBody2D4"]
+
+[editable path="Player"]
+
+[editable path="CanvasLayer"]
+
+[editable path="Node2D"]
+
+[editable path="MOVINGPLATFORMS/MovingPlatform2"]
+
+[editable path="MOVINGPLATFORMS/MovingPlatform3"]
+
+[editable path="MOVINGPLATFORMS/MovingPlatformUP"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Menus/[ONTIVA.COM] Sonic The Hedgehog OST - Marble Zone-64k.ogg" type="AudioStream" id=1]
+[ext_resource path="res://World/Chemical Plant Zone - Sonic the Hedgehog 2 [OST].ogg" type="AudioStream" id=2]
+[ext_resource path="res://Menus/Menu Music.gd" type="Script" id=3]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -54.0
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -30.0

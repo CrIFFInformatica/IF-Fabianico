@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/[ONTIVA.COM] Sonic The Hedgehog OST - Marble Zone-64k.ogg-1df9df5c40e13fb2b090617b455ed551.oggstr"
+
+[deps]
+
+source_file="res://Menus/[ONTIVA.COM] Sonic The Hedgehog OST - Marble Zone-64k.ogg"
+dest_files=[ "res://.import/[ONTIVA.COM] Sonic The Hedgehog OST - Marble Zone-64k.ogg-1df9df5c40e13fb2b090617b455ed551.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

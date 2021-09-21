@@ -1,0 +1,167 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Menus/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://World/sprite_montanha_krita.png" type="Texture" id=2]
+[ext_resource path="res://Menus/1200px-Instituto_Federal_Fluminense_-_Marca_Vertical_2015.svg.png" type="Texture" id=3]
+[ext_resource path="res://Menus/MainMenu.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Menus/Menu Music.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Menus/Opções.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Menus/Créditos.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Menus/Control.tscn" type="PackedScene" id=8]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Menus/Fonte/ARIALBI.TTF"
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://Menus/Fonte/ARIAL.TTF"
+
+[sub_resource type="DynamicFont" id=4]
+size = 8
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = SubResource( 3 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.353952
+margin_top = -0.117981
+margin_right = -0.353943
+margin_bottom = -0.117981
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.353952, 0.117983 )
+scale = Vector2( 0.266667, 0.153333 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 272.354, 120.118 )
+scale = Vector2( 0.0734071, 0.0726015 )
+texture = ExtResource( 3 )
+
+[node name="Play" type="Button" parent="."]
+margin_left = 8.0
+margin_top = 80.0
+margin_right = 70.0
+margin_bottom = 122.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 4 )
+text = "Jogar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Button" parent="."]
+margin_left = 8.35395
+margin_top = 104.118
+margin_right = 55.354
+margin_bottom = 146.118
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 4 )
+text = "Sair"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Button" parent="."]
+margin_left = 8.35395
+margin_top = 128.118
+margin_right = 94.354
+margin_bottom = 170.118
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 4 )
+text = "Créditos"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options2" type="Button" parent="."]
+margin_left = 8.35395
+margin_top = 152.118
+margin_right = 124.354
+margin_bottom = 177.118
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = ExtResource( 4 )
+text = "Configurações"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 24.354
+margin_top = 8.11798
+margin_right = 298.354
+margin_bottom = 44.118
+custom_fonts/font = SubResource( 2 )
+text = "The
+IF-abianico"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 240.354
+margin_top = 160.118
+margin_right = 308.354
+margin_bottom = 174.118
+custom_fonts/font = SubResource( 4 )
+text = "Campus Itaperuna"
+
+[node name="Menu Music" parent="." instance=ExtResource( 5 )]
+
+[node name="Options3" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="Sprite" parent="Options3" index="0"]
+scale = Vector2( 0.266962, 0.153432 )
+texture = ExtResource( 2 )
+
+[node name="HScrollBar" parent="Options3/CheckBox" index="0"]
+visible = false
+
+[node name="Credits2" parent="." instance=ExtResource( 7 )]
+visible = false
+
+[node name="Sprite" parent="Credits2" index="0"]
+scale = Vector2( 0.266962, 0.153432 )
+texture = ExtResource( 2 )
+
+[node name="Control" parent="." instance=ExtResource( 8 )]
+visible = false
+margin_left = 44.706
+margin_top = 80.3986
+margin_right = 44.706
+margin_bottom = 80.3986
+
+[node name="Panel" parent="Control" index="0"]
+modulate = Color( 1, 1, 1, 0.937255 )
+[connection signal="Music_vol" from="." to="Menu Music" method="_on_MainMenu_Music_vol"]
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="Options2" to="." method="_on_Options2_pressed"]
+[connection signal="toggled" from="Options3/CheckBox" to="." method="_on_CheckBox_toggled"]
+[connection signal="value_changed" from="Options3/CheckBox/HScrollBar" to="." method="_on_HScrollBar_value_changed"]
+[connection signal="pressed" from="Control/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Control/Button2" to="." method="_on_Button2_pressed"]
+
+[editable path="Options3"]
+
+[editable path="Credits2"]
+
+[editable path="Control"]
